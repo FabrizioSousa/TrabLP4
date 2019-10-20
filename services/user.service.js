@@ -5,7 +5,7 @@ var bcrypt = require('bcryptjs');
 var Q = require('q');
 var mongo = require('mongoskin');
 var db = mongo.db(config.connectionString, { native_parser: true });
-db.bind('users');
+db.bind('Usuario');
 
 
 var service = {};
@@ -21,7 +21,7 @@ module.exports = service;
 function authenticate(username, password) {
     var deferred = Q.defer();
 
-    db.users.findOne({ username: username }, function (err, user) {
+    db.Usuario.findOne({ username: username }, function (err, user) {
         if (err) deferred.reject(err.name + ': ' + err.message);
 
         if (user && bcrypt.compareSync(password, user.hash)) {
@@ -39,7 +39,7 @@ function authenticate(username, password) {
 function getById(_id) {
     var deferred = Q.defer();
 
-    db.users.findById(_id, function (err, user) {
+    db.Usuario.findById(_id, function (err, user) {
         if (err) deferred.reject(err.name + ': ' + err.message);
 
         if (user) {
@@ -58,7 +58,7 @@ function create(userParam) {
     var deferred = Q.defer();
 
     // validation
-    db.users.findOne(
+    db.Usuario.findOne(
         { username: userParam.username },
         function (err, user) {
             if (err) deferred.reject(err.name + ': ' + err.message);
@@ -73,12 +73,12 @@ function create(userParam) {
 
     function createUser() {
         // set user object to userParam without the cleartext password
-        var user = _.omit(userParam, 'password');
+        var user = _.omit(userParam, 'Senha');
 
         // add hashed password to user object
-        user.hash = bcrypt.hashSync(userParam.password, 10);
-
-        db.users.insert(
+        user.hash = bcrypt.hashSync(userParam.Senha, 10);
+        console.log(user);
+        db.Usuario.insert(
             user,
             function (err, doc) {
                 if (err) deferred.reject(err.name + ': ' + err.message);
@@ -94,12 +94,12 @@ function update(_id, userParam) {
     var deferred = Q.defer();
 
     // validation
-    db.users.findById(_id, function (err, user) {
+    db.Usuario.findById(_id, function (err, user) {
         if (err) deferred.reject(err.name + ': ' + err.message);
 
         if (user.username !== userParam.username) {
             // username has changed so check if the new username is already taken
-            db.users.findOne(
+            db.Usuario.findOne(
                 { username: userParam.username },
                 function (err, user) {
                     if (err) deferred.reject(err.name + ': ' + err.message);
@@ -129,7 +129,7 @@ function update(_id, userParam) {
             set.hash = bcrypt.hashSync(userParam.password, 10);
         }
 
-        db.users.update(
+        db.Usuario.update(
             { _id: mongo.helper.toObjectID(_id) },
             { $set: set },
             function (err, doc) {
@@ -145,7 +145,7 @@ function update(_id, userParam) {
 function _delete(_id) {
     var deferred = Q.defer();
 
-    db.users.remove(
+    db.ImagineAcao.remove(
         { _id: mongo.helper.toObjectID(_id) },
         function (err) {
             if (err) deferred.reject(err.name + ': ' + err.message);

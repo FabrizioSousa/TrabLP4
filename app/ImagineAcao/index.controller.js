@@ -3,22 +3,22 @@
 
     angular
         .module('app')
-        .controller('Home.IndexController', Controller);
+        .controller('ImagineAcao.IndexController', Controller);
 
-    function Controller(UserService) {
-        var vm = this;
+    // function Controller(UserService) {
+    //     var vm = this;
 
-        vm.user = null;
+    //     vm.user = null;
        
 
-        initController();
+    //     initController();
 
-        function initController() {
-            // get current user
-            UserService.GetCurrent().then(function (user) {
-                vm.user = user;
-            });
-        }
-    }
+    //     function initController() {
+    //         // get current user
+    //         UserService.GetCurrent().then(function (user) {
+    //             vm.user = user;
+    //         });
+    //     }
+    // }
 
 })();

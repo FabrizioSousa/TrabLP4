@@ -1,4 +1,7 @@
-﻿var express = require('express');
+﻿
+
+
+var express = require('express');
 var router = express.Router();
 var request = require('request');
 var config = require('config.json');
@@ -6,8 +9,8 @@ var config = require('config.json');
 router.get('/', function (req, res) {
     res.render('register');
 });
-
 router.post('/', function (req, res) {
+   
     // register using api to maintain clean separation between layers
     request.post({
         url: config.apiUrl + '/users/register',
@@ -21,9 +24,15 @@ router.post('/', function (req, res) {
         if (response.statusCode !== 200) {
             return res.render('register', {
                 error: response.body,
-                firstName: req.body.firstName,
-                lastName: req.body.lastName,
-                username: req.body.username
+                Nome: req.body.Email,
+                CPF: req.body.CPF,
+                Telefone: req.body.Telefone,
+                Endereco: req.body.Endereco,
+                Data_Nascimento: req.body.dataNasc,
+                Senha: req.body.Senha,
+                SexoMasc: req.body.SexoMasc,
+                SexoFem: req.body.SexoFem,
+                Imagem: req.body.Imagem
             });
         }
 
@@ -32,5 +41,12 @@ router.post('/', function (req, res) {
         return res.redirect('/login');
     });
 });
-
+       
+    
 module.exports = router;
+    
+        
+       
+         
+           
+         
