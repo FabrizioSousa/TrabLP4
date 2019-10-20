@@ -32,7 +32,8 @@ app.use(express.static( __dirname + '/libs/'));
 // a pasta com as visões se encontra em views
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
-
+app.use('/css', express.static( __dirname + '\\css'));
+app.use('/Imagens', express.static( __dirname + '\\Imagens'));
 // Parametrização que indica o uso de json no body para transferir dados de uma camada para a outra
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
