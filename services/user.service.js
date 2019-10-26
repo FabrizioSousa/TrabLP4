@@ -20,8 +20,8 @@ module.exports = service;
 
 function authenticate(email, password) {
     var deferred = Q.defer();
-    console.log("Email: " + email + " Password: " + password)
-    db.Usuario.findOne({ email: email }, function (err, user) {
+    
+    db.Usuario.findOne({ Email: email }, function (err, user) {
         if (err) deferred.reject(err.name + ': ' + err.message);
 
         if (user && bcrypt.compareSync(password, user.hash)) {
@@ -59,7 +59,7 @@ function create(userParam) {
 
     // validation
     db.Usuario.findOne(
-        { username: userParam.username },
+        { Email: userParam.Email },
         function (err, user) {
             if (err) deferred.reject(err.name + ': ' + err.message);
 

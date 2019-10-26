@@ -17,9 +17,9 @@ var expressJwt = require('express-jwt');
 // carrega as configurações mapeadas no json
 var config = require('config.json');
 // faz a leitura da porta que será utilizada para o app
-var port = process.env.PORT || 8092;
+var port = process.env.PORT || 8093;
 // agora escutando em uma porta diferente a api.
-var apiPort = 9050; 
+var apiPort = 9060; 
 
 // Inicialização do express do App. 
 // A primeira linha já trata a questão falada no dia 21/02, sobre diretórios com conteúdo estático.
