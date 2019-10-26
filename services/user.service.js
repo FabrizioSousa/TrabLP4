@@ -77,7 +77,7 @@ function create(userParam) {
 
         // add hashed password to user object
         user.hash = bcrypt.hashSync(userParam.Senha, 10);
-        console.log(user);
+   
         db.Usuario.insert(
             user,
             function (err, doc) {

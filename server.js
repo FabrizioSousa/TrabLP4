@@ -63,7 +63,7 @@ app.use('/api/users', require('./controllers/api/users.controller'));
 // configuração do redirecionamento inicial é isso que indica o que vai acontecer quando for feita a chamada do 
 // http://localhost:8092. Nesse caso, a aplicação será direcionada para 
 app.get('/', function (req, res) {
-    return res.redirect('/app');
+    return res.redirect('/app/ImagineAcao');
 });
 
 // Por fim, a inicialização dos dois servers. O primeiro do app e o segundo para a API
