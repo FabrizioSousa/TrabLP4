@@ -18,10 +18,10 @@ service.delete = _delete;
 
 module.exports = service;
 
-function authenticate(username, password) {
+function authenticate(email, password) {
     var deferred = Q.defer();
-
-    db.Usuario.findOne({ username: username }, function (err, user) {
+    console.log("Email: " + email + " Password: " + password)
+    db.Usuario.findOne({ email: email }, function (err, user) {
         if (err) deferred.reject(err.name + ': ' + err.message);
 
         if (user && bcrypt.compareSync(password, user.hash)) {
