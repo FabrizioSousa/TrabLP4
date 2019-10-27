@@ -8,25 +8,11 @@
     function Controller($window, Consulta, FlashService) {
         var vm = this;
 
-        vm.Question = null;
-        vm.saveQuestion = saveQuestion;
-        
-        vm.DeletarPorID = DeletarPorID;
-        vm.ListQuestions = null
-        initController();
-
-        function initController() {
-            // get current user
-            Consulta.GetAll().then(function (questions) {
-               
-                vm.listquestions = questions;
-                console.log(vm.listquestions);
-            });
-            
-        }    
        
+        vm.Cadastrar = Cadastrar;
+    
 
-        function saveQuestion() {
+        function Cadastrar() {
             Consulta.Create(vm.Question)
                 .then(function () {
                     FlashService.Success('Question created');
@@ -35,16 +21,7 @@
                     FlashService.Error(error);
                 });
         }
-        function DeletarPorID(ID) {
-            console.log(ID);
-            Consulta.Delete(ID)
-            .then(function () {
-                initController();
-            })
-            .catch(function (error) {
-                FlashService.Error(error);
-            });
-        }
+       
 
     
     }   

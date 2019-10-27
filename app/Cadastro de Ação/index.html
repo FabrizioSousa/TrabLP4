@@ -36,6 +36,7 @@
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
+                                        <form method="POST">
                                     <label class="label">Nome da ação</label>
                                     <input class="input--style-4" type="text" name="first_name">
                                 </div>
@@ -43,7 +44,7 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Endereço</label>
-                                    <input class="input--style-4" type="text" name="last_name">
+                                    <input class="input--style-4" type="text" name="last_name" placeholder="Rua,Cidade,Estado">
                                 </div>
                             </div>
                         </div>
@@ -106,8 +107,11 @@
                       
                         
                         <div class="p-t-15">
-                            <a class="btn btn--radius-2 btn--blue" onclick="window.location.href='../ImagineAcao/index.html';">Cadastrar</a>
+                            <!-- <a class="btn btn--radius-2 btn--blue" onclick="window.location.href='../ImagineAcao/index.html';">Cadastrar</a>
+                             -->
+                             <a class="btn btn--radius-2 btn--blue" ng-click="vm.Cadastrar()">Cadastrar</a>
                         </div>
+                    </form>
                     </div>
                     </form>
                 </div>
