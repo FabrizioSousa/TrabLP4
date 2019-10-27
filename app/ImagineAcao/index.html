@@ -5,15 +5,38 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Shop Homepage - Start Bootstrap Template</title>
-
+  <title>ImagineAcao</title>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_pb-GFonCapPQ7yFF4Dntv9WjTrjvY9E&callback=initMap"
+  async defer></script>
+  <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 8
+        });
+      }
+    </script>
+  <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
   <!-- Bootstrap core CSS -->
   <link href="../../css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
   <link href="../../css/shop-homepage.css" rel="stylesheet">
 
-
+<body>
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-Azul fixed-top">
     <div class="container">
@@ -35,7 +58,7 @@
               </a>
             </li>
           <li class="nav-item">
-            <a class="nav-link" href="../../views/register.ejs">Logout</a>
+            <a class="nav-link" href="/login">Logout</a>
           </li>
          
         </ul>
@@ -96,7 +119,7 @@
               <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
               <div class="card-body">
                 <h4 class="card-title">
-                  <a href="#">Item One</a>
+                  <a href="../DetalheAção/index.html">Item One</a>
                 </h4>
                 <h5>$24.99</h5>
                 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
@@ -198,7 +221,7 @@
 
   </div>
   <!-- /.container -->
-
+</body>
   <!-- Footer -->
  
   <!-- Bootstrap core JavaScript -->

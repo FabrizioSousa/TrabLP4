@@ -3,6 +3,9 @@
     margin-top: 3%;
     padding: 3%;
 }
+body{
+    background:-webkit-linear-gradient(left,#00c6ff , #9CDBFF);
+}
 .register-left{
     text-align: center;
     color: #fff;
