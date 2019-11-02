@@ -56,14 +56,16 @@ app.use('/login', require('./controllers/login.controller'));
 app.use('/register', require('./controllers/register.controller'));
 app.use('/app', require('./controllers/app.controller'));
 app.use('/api/users', require('./controllers/api/users.controller'));
-
+app.use('/CadastroAcao', require('./controllers/CadastroAcao.controller'));
+app.use('/DetalheAcao', require('./controllers/DetalheAcao.controller'));
+// app.use('/consulta', require('./controllers/consulta.controller'));
 
 
 
 // configuração do redirecionamento inicial é isso que indica o que vai acontecer quando for feita a chamada do 
 // http://localhost:8092. Nesse caso, a aplicação será direcionada para 
 app.get('/', function (req, res) {
-    return res.redirect('/app/ImagineAcao');
+    return res.redirect('/app');
 });
 
 // Por fim, a inicialização dos dois servers. O primeiro do app e o segundo para a API

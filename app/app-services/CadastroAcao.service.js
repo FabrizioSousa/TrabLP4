@@ -3,7 +3,7 @@
 
     angular
         .module('app')
-        .factory('Consulta', Service);
+        .factory('CadastroAcao', Service);
 
     function Service($http, $q) {
         var service = {};
@@ -14,7 +14,7 @@
         service.Delete = Delete
         service.Qtd = Qtd
         service.SalvaDados = SalvaDados;
-
+        console.log("Passou no Estoque.Service");
         return service;
 
 

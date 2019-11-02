@@ -3,7 +3,7 @@
 
     angular
         .module('app')
-        .controller('Consulta.IndexController', Controller);
+        .controller('DetalheAcao.IndexController', Controller);
 
     function Controller($window, Consulta, FlashService) {
         var vm = this;

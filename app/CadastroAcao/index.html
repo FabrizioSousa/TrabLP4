@@ -4,7 +4,7 @@
    
 
     <!-- Title Page-->
-    <title>Au Register Forms by Colorlib</title>
+    <title>Cadastro de Ação</title>
 
     <!-- Icons font CSS-->
     <link href="../../css/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
@@ -26,25 +26,25 @@
     <link href="../../css/TelacadastroAcao.css" rel="stylesheet" media="all">
 
 
-
+<body>
     <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
         <div class="wrapper wrapper--w680">
             <div class="card card-4">
                 <div class="card-body">
                     <h2 class="title">Cadastro de Ação</h2>
-                    <form method="POST">
+                   
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
-                                        <form method="POST">
+                                       
                                     <label class="label">Nome da ação</label>
-                                    <input class="input--style-4" type="text" name="first_name">
+                                    <input class="input--style-4" type="text" ng-model="vm.Nome_Acao">
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Endereço</label>
-                                    <input class="input--style-4" type="text" name="last_name" placeholder="Rua,Cidade,Estado">
+                                    <input class="input--style-4" type="text" ng-model="vm.Endereco_Acao" placeholder="Rua,Cidade,Estado">
                                 </div>
                             </div>
                         </div>
@@ -53,7 +53,7 @@
                                 <div class="input-group">
                                     <label class="label">Data</label>
                                     <div class="input-group-icon">
-                                        <input class="input--style-4 js-datepicker" type="text" name="birthday">
+                                        <input class="input--style-4 js-datepicker" id="Data" type="text" ng-model="vm.Data_Acao">
                                         <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
                                     </div>
                                 </div>
@@ -64,7 +64,7 @@
                         <div class="row row-space" >
                                 <div class="input-group">
                                         <label class="label">Detalhes</label>
-                                        <textarea class="form-control"  rows="5" cols="70"></textarea>
+                                        <textarea class="form-control"  id="Detalhes" rows="5" cols="70" ng-model="vm.Detalhes_Acao"></textarea>
                               </div>
                                 
                             </div>
@@ -78,25 +78,28 @@
                            
                         </div> -->
                        
-                        <div class="input-group ">
-                            <label class="label col-2 ">Categoria</label>
-                            <div class="rs-select2 js-select-simple select--no-search">
-                                <select name="subject">
-                                    <option disabled="disabled" selected="selected">Escolha Categoria</option>
-                                    <option>Subject 1</option>
-                                    <option>Subject 2</option>
-                                    <option>Subject 3</option>
-                                </select>
+                        <div class="input-group">
+                            <label class="label  ">Categoria</label>
+                            <select  id="cdCategoria" class=" col-md-12"  ng-model="vm.cbCategoria">
+                                <option>Educação</option>
+                                <option>Saúde</option>
+                                <option>Pets</option>
+                                <option>Adoção</option>
+                                <option>Doação</option>
+                                
+                            </select>
                                 <div class="select-dropdown"></div>
                             </div>
                         </div>
                         <div class="row">
+                            <div class="col-md-1"></div>
                                 <div class="form-group">
+                                 
                                         <label class="label">Imagem</label>
-                                        <div class="input-group">
+                                        <div class="input-group col-md-12">
                                             <span class="input-group-btn">
                                                 <span class="btn btn-default btn-file">
-                                                   <input type="file" name="Imagem" id="imgInp">
+                                                   <input type="file"  ng-model="vm.Imagem" id="imgInp">
                                                 </span>
                                             </span>
                                            
@@ -105,19 +108,21 @@
                                     </div>
                                 </div>
                       
-                        
+                       
                         <div class="p-t-15">
                             <!-- <a class="btn btn--radius-2 btn--blue" onclick="window.location.href='../ImagineAcao/index.html';">Cadastrar</a>
                              -->
                              <a class="btn btn--radius-2 btn--blue" ng-click="vm.Cadastrar()">Cadastrar</a>
+                         
                         </div>
-                    </form>
+                    
                     </div>
-                    </form>
+                  
                 </div>
             </div>
         </div>
     </div>
+</body>
 
     <!-- Jquery JS-->
     <script src="../../css/vendor/jquery/jquery.min.js"></script>
