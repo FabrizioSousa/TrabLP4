@@ -39,7 +39,7 @@
            
         CadastroAcao.SalvaDados(ArraySalvar)
            .then(function () {
-               FlashService.Success('Pergunta salva com sucesso!');
+               FlashService.Success('Ação feita com sucesso!');
            })
            .catch(function (error) {
                FlashService.Error(error);

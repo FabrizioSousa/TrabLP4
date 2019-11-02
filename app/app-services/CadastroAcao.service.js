@@ -20,7 +20,7 @@
 
         function SalvaDados(ArrayParaSalvar) {
         
-            return $http.post('/estoque/SalvarDados',ArrayParaSalvar).then(handleSuccess, handleError);
+            return $http.post('/CadastroAcao/SalvarDados',ArrayParaSalvar).then(handleSuccess, handleError);
         }
 
 

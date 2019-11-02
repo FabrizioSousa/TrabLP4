@@ -5,7 +5,7 @@ var bcrypt = require('bcryptjs');
 var Q = require('q');
 var mongo = require('mongoskin');
 var db = mongo.db(config.connectionString, { native_parser: true });
-db.bind('ImagineAcao');
+db.bind('Acao');
 
 
 var service = {};
@@ -56,7 +56,7 @@ function getById(_id) {
 
 function Save(questionParam) {
     var deferred = Q.defer();
-        db.Estoque.insert(
+        db.Acao.insert(
             questionParam,
             function (err, doc) {
                 if (err) deferred.reject(err.name + ': ' + err.message);
