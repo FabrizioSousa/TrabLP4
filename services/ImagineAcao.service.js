@@ -5,7 +5,7 @@ var bcrypt = require('bcryptjs');
 var Q = require('q');
 var mongo = require('mongoskin');
 var db = mongo.db(config.connectionString, { native_parser: true });
-db.bind('Estoque');
+db.bind('Acao');
 
 var service = {};
 
@@ -41,9 +41,9 @@ function _delete(id) {
 function getAll() {
     var deferred = Q.defer();
 
-    db.Estoque.find().toArray(function (err, questions) {
+    db.Acao.find().toArray(function (err, Nome_Acao) {
         if (err) deferred.reject(err.name + ': ' + err.message);
-            deferred.resolve(questions);
+            deferred.resolve(Nome_Acao);
     }
     )
     return deferred.promise;

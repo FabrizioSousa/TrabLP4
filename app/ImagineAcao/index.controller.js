@@ -22,12 +22,14 @@
 
         function initController() {
             // get current user
-            UserService.GetCurrent().then(function (user) {
-                vm.user = user;
+            ImagineAcao.GetAll().then(function (questions) {
+               
+                vm.listquestions = questions;
+                console.log(vm.listquestions);
             });
         }
 
-
+        
       
 
 

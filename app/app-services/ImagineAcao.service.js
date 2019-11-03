@@ -10,7 +10,7 @@
 
       
         service.VerProduto = VerProduto;
-       
+        service.GetAll = GetAll;
       
     
      
@@ -18,10 +18,12 @@
 
 
         function VerProduto() {
-        console.log("Boooa");
+   
             return $http.post('/DetalheAcao').then(handleSuccess, handleError);
         }
-
+        function GetAll() {
+            return $http.get('/ImagineAcao/listar').then(handleSuccess, handleError);
+        }
 
      
 
