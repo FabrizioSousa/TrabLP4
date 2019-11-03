@@ -3,9 +3,9 @@
 
     angular
         .module('app')
-        .controller('Consulta.IndexController', Controller);
+        .controller('Historico.IndexController', Controller);
 
-    function Controller($window, Consulta, FlashService) {
+    function Controller($window, Historico, FlashService) {
         var vm = this;
 
         vm.Question = null;
@@ -17,7 +17,7 @@
 
         function initController() {
             // get current user
-            Consulta.GetAll().then(function (questions) {
+            Historico.GetAll().then(function (questions) {
                
                 vm.listquestions = questions;
                 console.log(vm.listquestions);
@@ -27,7 +27,7 @@
        
 
         function saveQuestion() {
-            Consulta.Create(vm.Question)
+            Historico.Create(vm.Question)
                 .then(function () {
                     FlashService.Success('Question created');
                 })
@@ -37,7 +37,7 @@
         }
         function DeletarPorID(ID) {
             console.log(ID);
-            Consulta.Delete(ID)
+            Historico.Delete(ID)
             .then(function () {
                 initController();
             })

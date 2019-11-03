@@ -5,7 +5,7 @@
         .module('app')
         .controller('DetalheAcao.IndexController', Controller);
 
-    function Controller($window, Consulta, FlashService) {
+    function Controller($window, DetalheAcao, FlashService) {
         var vm = this;
 
         vm.Question = null;
@@ -17,7 +17,7 @@
 
         function initController() {
             // get current user
-            Consulta.GetAll().then(function (questions) {
+            DetalheAcao.GetAll().then(function (questions) {
                
                 vm.listquestions = questions;
                 console.log(vm.listquestions);
@@ -27,7 +27,7 @@
        
 
         function saveQuestion() {
-            Consulta.Create(vm.Question)
+            DetalheAcao.Create(vm.Question)
                 .then(function () {
                     FlashService.Success('Question created');
                 })
@@ -37,7 +37,7 @@
         }
         function DeletarPorID(ID) {
             console.log(ID);
-            Consulta.Delete(ID)
+            DetalheAcao.Delete(ID)
             .then(function () {
                 initController();
             })

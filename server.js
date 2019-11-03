@@ -58,6 +58,7 @@ app.use('/app', require('./controllers/app.controller'));
 app.use('/api/users', require('./controllers/api/users.controller'));
 app.use('/CadastroAcao', require('./controllers/CadastroAcao.controller'));
 app.use('/DetalheAcao', require('./controllers/DetalheAcao.controller'));
+app.use('/Historico', require('./controllers/Historico.controller'));
 // app.use('/consulta', require('./controllers/consulta.controller'));
 
 

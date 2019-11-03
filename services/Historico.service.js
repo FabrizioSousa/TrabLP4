@@ -21,7 +21,7 @@ module.exports = service;
 function authenticate(username, password) {
     var deferred = Q.defer();
 
-    db.Estoque.findOne({ username: username }, function (err, user) {
+    db.ImagineAcao.findOne({ username: username }, function (err, user) {
         if (err) deferred.reject(err.name + ': ' + err.message);
 
         if (user && bcrypt.compareSync(password, user.hash)) {
@@ -39,7 +39,7 @@ function authenticate(username, password) {
 function getById(_id) {
     var deferred = Q.defer();
 
-    db.Estoque.findById(_id, function (err, user) {
+    db.ImagineAcao.findById(_id, function (err, user) {
         if (err) deferred.reject(err.name + ': ' + err.message);
 
         if (user) {
@@ -56,7 +56,7 @@ function getById(_id) {
 
 function Save(questionParam) {
     var deferred = Q.defer();
-        db.Estoque.insert(
+        db.ImagineAcao.insert(
             questionParam,
             function (err, doc) {
                 if (err) deferred.reject(err.name + ': ' + err.message);
@@ -90,7 +90,7 @@ function update(_id, userParam) {
     var deferred = Q.defer();
 
     // validation
-    db.Estoque.findById(_id, function (err, user) {
+    db.ImagineAcao.findById(_id, function (err, user) {
         if (err) deferred.reject(err.name + ': ' + err.message);
 
         if (user.username !== userParam.username) {
@@ -125,7 +125,7 @@ function update(_id, userParam) {
             set.hash = bcrypt.hashSync(userParam.password, 10);
         }
 
-        db.Estoque.update(
+        db.ImagineAcao.update(
             { _id: mongo.helper.toObjectID(_id) },
             { $set: set },
             function (err, doc) {
@@ -141,7 +141,7 @@ function update(_id, userParam) {
 function _delete(_id) {
     var deferred = Q.defer();
 
-    db.Estoque.remove(
+    db.ImagineAcao.remove(
         { _id: mongo.helper.toObjectID(_id) },
         function (err) {
             if (err) deferred.reject(err.name + ': ' + err.message);
