@@ -9,6 +9,7 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_pb-GFonCapPQ7yFF4Dntv9WjTrjvY9E&callback=initMap"></script>
   <title>ImagineAcao</title>
   <script src="app.js"></script>
   <script src="app-services/user.service.js"></script>
@@ -18,11 +19,71 @@
   <script src="app-services/ImagineAcao.service.js"></script>
   <script src="app-services/Historico.service.js"></script>
   <script src="app-services/DetalheAcao.service.js"></script>
+  <script src="app-services/Informacao.service.js"></script>
   <script src="CadastroAcao/index.controller.js"></script>
   <script src="ImagineAcao/index.controller.js"></script>
   <script src="DetalheAcao/index.controller.js"></script>
   <script src="Historico/index.controller.js"></script>
+  <script src="Informacao/index.controller.js"></script>
  
+  <script>
+    function loadJSON(callback) {   
+        var endereco = "Rua Haddock Lobo, 195, Santo André, SP";
+       
+
+var xobj = new XMLHttpRequest();
+xobj.overrideMimeType("application/json");
+xobj.open('GET', 'http://open.mapquestapi.com/geocoding/v1/address?key=5UUyDHxQ9S1Jd2ZKbxQa8Wyuo8ZPAxiz&location=' + endereco, true); // Replace 'my_data' with the path to your file
+xobj.onreadystatechange = function () {
+  if (xobj.readyState == 4 && xobj.status == "200") {
+    // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
+ 
+    callback(xobj.responseText);
+  
+  }
+};
+xobj.send(null);  
+}
+
+
+  var map;
+  var marker;
+  
+  function initMap() {
+      
+    loadJSON(function(response)
+       {
+        var a = JSON.parse(response);
+    var localizacao =  a.results[0].locations[0].latLng;
+//    var center: {lat: localizacao.lat};
+    var options = {
+    zoom:14,
+    center: {lat: localizacao.lat, lng: localizacao.lng }
+  }
+    map = new google.maps.Map(document.getElementById('map'), {
+     options
+    });
+    var marker= new google.maps.Marker(
+        {
+            position: {lat: localizacao.lat, lng: localizacao.lng},
+            map:map,
+            icon: '/Imagens/Kanban.png'
+        }
+    );
+});
+  
+    //    loadJSON(function(response)
+    //    {
+    //        var a = JSON.parse(response);
+    //        var localizacao =  a.results[0].locations[0].latLng;
+    //     //    var b = JSON.parse(response.results[0].locations[0].latlng.lat);
+    //        console.log("LAT: " + localizacao.lat + " LNG: " +localizacao.lng )
+    //     //    console.log(b);
+    //    });
+    
+  }
+</script>
+
   <!-- Bootstrap core JavaScript -->
   <script src="../../css/vendor/jquery_a/jquery.min.js"></script>
   <script src="../../css/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -32,7 +93,18 @@
 
   <!-- Custom styles for this template -->
   <link href="../../css/shop-homepage.css" rel="stylesheet">
-
+  <style>
+    /* Always set the map height explicitly to define the size of the div
+     * element that contains the map. */
+    #map {
+      height: 100%;
+    }
+    /* Optional: Makes the sample page fill the window. */
+    html, body {
+      height: 100%;
+      
+    }
+  </style>
 </head>
   <!-- Navigation -->
  
@@ -40,7 +112,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-Azul fixed-top">
       <div class="container">
         <a class="navbar-brand" href="#">ImagineAcao</a>
-        <img src="../../Imagens/logo.png">
+        <img src="/Imagens/logo.png">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -73,7 +145,8 @@
     </nav>
     
   </head>
-
+  <div id="map"></div>
+  <p id="Endereco"></p>
       <main ui-view></main>
       
     <!-- </div>

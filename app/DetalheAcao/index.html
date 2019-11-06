@@ -12,7 +12,7 @@
   <script>
         function loadJSON(callback) {   
             var endereco = "Rua Haddock Lobo, 195, Santo André, SP";
-            var endereco_tratado = endereco.replace(" ", "%20")
+           
 
 var xobj = new XMLHttpRequest();
     xobj.overrideMimeType("application/json");
@@ -20,6 +20,7 @@ var xobj = new XMLHttpRequest();
     xobj.onreadystatechange = function () {
       if (xobj.readyState == 4 && xobj.status == "200") {
         // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
+     
         callback(xobj.responseText);
       
       }
@@ -32,6 +33,7 @@ xobj.send(null);
       var marker;
       
       function initMap() {
+          
         loadJSON(function(response)
            {
             var a = JSON.parse(response);

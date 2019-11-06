@@ -3,7 +3,7 @@
 
     angular
         .module('app')
-        .factory('DetalheAcao', Service);
+        .factory('Informacao', Service);
 
     function Service($http, $q) {
         var service = {};

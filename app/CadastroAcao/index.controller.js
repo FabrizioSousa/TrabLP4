@@ -24,16 +24,17 @@
             // ok
             var Data_Escolhida = document.getElementById('Data').value;
             var Detalhes = document.getElementById('Detalhes').value;
+          
            
-           
-            // console.log(Vlr_Margem_Calculado);
+            console.log(vm.Imagem);
             // debugger;
             let ArraySalvar = {
                 Nome_Acao: vm.Nome_Acao,
                 Endereco: vm.Endereco_Acao,
                 Data: Data_Escolhida,
                 Categoria: vm.cbCategoria,
-                Detalhes: Detalhes
+                Detalhes: Detalhes,
+                Imagem: vm.Imagem
             }
         //    console.log(ArraySalvar);
            

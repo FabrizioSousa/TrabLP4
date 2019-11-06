@@ -17,7 +17,14 @@
                 controller: 'CadastroAcao.IndexController',
                 controllerAs: 'vm',
                 data: { activeTab: 'CadastroAcao' }
-                 })                
+                 })  
+                 .state('Informacao', {
+                    url: '/Informacao',
+                    templateUrl: 'Informacao/index.html',
+                    controller: 'Informacao.IndexController',
+                    controllerAs: 'vm',
+                    data: { activeTab: 'Informacao' }
+                     })               
                  .state('ImagineAcao', {
                 url: '/ImagineAcao',
                 templateUrl: 'ImagineAcao/index.html',
@@ -39,7 +46,7 @@
                         controllerAs: 'vm',
                         data: { activeTab: 'Historico' }
                          }) 
-                
+                       
                 
             
             

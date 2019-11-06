@@ -1,0 +1,96 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<script src="../../css/js/Detalhe.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_pb-GFonCapPQ7yFF4Dntv9WjTrjvY9E&callback=initMap"
+  async defer></script>
+  <script>
+        function loadJSON(callback) {   
+            var endereco = "Rua Haddock Lobo, 195, Santo André, SP";
+           
+
+var xobj = new XMLHttpRequest();
+    xobj.overrideMimeType("application/json");
+    xobj.open('GET', 'http://open.mapquestapi.com/geocoding/v1/address?key=5UUyDHxQ9S1Jd2ZKbxQa8Wyuo8ZPAxiz&location=' + endereco, true); // Replace 'my_data' with the path to your file
+    xobj.onreadystatechange = function () {
+      if (xobj.readyState == 4 && xobj.status == "200") {
+        // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
+     
+        callback(xobj.responseText);
+      
+      }
+};
+xobj.send(null);  
+}
+
+
+      var map;
+      var marker;
+      
+      function initMap() {
+          
+        loadJSON(function(response)
+           {
+            var a = JSON.parse(response);
+        var localizacao =  a.results[0].locations[0].latLng;
+    //    var center: {lat: localizacao.lat};
+        var options = {
+        zoom:14,
+        center: {lat: localizacao.lat, lng: localizacao.lng }
+      }
+        map = new google.maps.Map(document.getElementById('map'), {
+         options
+        });
+        var marker= new google.maps.Marker(
+            {
+                position: {lat: localizacao.lat, lng: localizacao.lng},
+                map:map,
+                icon: '/Imagens/logo.png'
+            }
+        );
+    });
+      
+        //    loadJSON(function(response)
+        //    {
+        //        var a = JSON.parse(response);
+        //        var localizacao =  a.results[0].locations[0].latLng;
+        //     //    var b = JSON.parse(response.results[0].locations[0].latlng.lat);
+        //        console.log("LAT: " + localizacao.lat + " LNG: " +localizacao.lng )
+        //     //    console.log(b);
+        //    });
+        
+      }
+    </script>
+
+    <script>
+   
+    </script>
+
+
+  <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        
+      }
+    </style>
+<!-- <link href="../../css/TelaDetalhe.css" rel="stylesheet"> -->
+
+<body>
+
+                <div id="map"></div>
+            </div>
+            
+        </div>  
+    </body>      
+

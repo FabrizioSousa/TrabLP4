@@ -1,7 +1,7 @@
 var config = require('config.json');
 var express = require('express');
 var router = express.Router();
-var userService = require('services/DetalheAcao.service');
+var userService = require('services/Informacao.service');
 
 // routes
 router.post('/SalvarDados', GravarDados);
@@ -11,6 +11,17 @@ router.put('/:_id', updateUser);
 router.delete('/:_id', deleteUser);
 router.get ('/listar', getAllQuestion);
 module.exports = router;
+
+function GravarDados(req, res) {
+    userService.Save(req.body)
+        .then(function () {
+            res.sendStatus(200);
+        })
+        .catch(function (err) {
+            res.status(400).send(err);
+        });
+}
+
 
 function getAllQuestion(req, res) {
     userService.getAll()
@@ -25,22 +36,6 @@ function getAllQuestion(req, res) {
             res.status(400).send(err);
         });
 }
-
-
-
-
-
-
-function GravarDados(req, res) {
-    userService.Save(req.body)
-        .then(function () {
-            res.sendStatus(200);
-        })
-        .catch(function (err) {
-            res.status(400).send(err);
-        });
-}
-
 function registerUser(req, res) {
     userService.create(req.body)
         .then(function () {

@@ -15,8 +15,21 @@ service.getById = getById;
 service.Save = Save;
 service.update = update;
 service.delete = _delete;
-
+service.getAll = getAll;
 module.exports = service;
+
+
+
+function getAll() {
+    var deferred = Q.defer();
+
+    db.Acao.find().toArray(function (err, Nome_Acao) {
+        if (err) deferred.reject(err.name + ': ' + err.message);
+            deferred.resolve(Nome_Acao);
+    }
+    )
+    return deferred.promise;
+}
 
 function authenticate(username, password) {
     var deferred = Q.defer();
