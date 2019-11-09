@@ -23,7 +23,7 @@
              
                 
                   vm.endereco = questions[0].Endereco;
-                 console.log(vm.endereco)
+                //  console.log(vm.endereco)
                   
                   });
                 }

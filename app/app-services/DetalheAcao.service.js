@@ -14,7 +14,7 @@
         service.Delete = Delete
         service.Qtd = Qtd
         service.SalvaDados = SalvaDados;
-        console.log("Passou no Estoque.Service");
+        // console.log("Passou no Estoque.Service");
         return service;
 
 

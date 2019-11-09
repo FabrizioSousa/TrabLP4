@@ -9,7 +9,8 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_pb-GFonCapPQ7yFF4Dntv9WjTrjvY9E&callback=initMap"></script>
+  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_pb-GFonCapPQ7yFF4Dntv9WjTrjvY9E&callback=initMap"
+  async defer></script> -->
   <title>ImagineAcao</title>
   <script src="app.js"></script>
   <script src="app-services/user.service.js"></script>
@@ -26,7 +27,7 @@
   <script src="Historico/index.controller.js"></script>
   <script src="Informacao/index.controller.js"></script>
  
-  <script>
+  <!-- <script>
     function loadJSON(callback) {   
         var endereco = "Rua Haddock Lobo, 195, Santo André, SP";
        
@@ -67,7 +68,7 @@ xobj.send(null);
         {
             position: {lat: localizacao.lat, lng: localizacao.lng},
             map:map,
-            icon: '/Imagens/Kanban.png'
+            icon: '/Imagens/logo.png'
         }
     );
 });
@@ -82,7 +83,7 @@ xobj.send(null);
     //    });
     
   }
-</script>
+</script> -->
 
   <!-- Bootstrap core JavaScript -->
   <script src="../../css/vendor/jquery_a/jquery.min.js"></script>
@@ -93,7 +94,7 @@ xobj.send(null);
 
   <!-- Custom styles for this template -->
   <link href="../../css/shop-homepage.css" rel="stylesheet">
-  <style>
+  <!-- <style>
     /* Always set the map height explicitly to define the size of the div
      * element that contains the map. */
     #map {
@@ -104,7 +105,7 @@ xobj.send(null);
       height: 100%;
       
     }
-  </style>
+  </style> -->
 </head>
   <!-- Navigation -->
  
@@ -146,7 +147,7 @@ xobj.send(null);
     
   </head>
   <div id="map"></div>
-  <p id="Endereco"></p>
+  
       <main ui-view></main>
       
     <!-- </div>

@@ -11,7 +11,7 @@
         vm.Question = null;
         vm.saveQuestion = saveQuestion;
         vm.endereco;
-        vm.DeletarPorID = DeletarPorID;
+      
         vm.ListQuestions = null
         loadJSON();
 
@@ -26,7 +26,8 @@
                  console.log(vm.endereco)
                   
                   }
-                }
+                
+              )}
                 
 
              
